@@ -3,7 +3,7 @@ name: API Tests Workflow
 on:
   push:
     branches:
-      - staging
+      - main
 
 jobs:
   run-newman:

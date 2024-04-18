@@ -21,12 +21,6 @@ jobs:
         with:
           node-version: '20.12.2'  # Specify your node version here
 
-      - name: Find pwd
-        run: pwd
-
-      - name: List files
-        run: ls
-
       - name: Install Newman
         run: npm install -g newman
 

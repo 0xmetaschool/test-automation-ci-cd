@@ -21,8 +21,11 @@ jobs:
         with:
           node-version: '20.12.2'  # Specify your node version here
 
-      - name: Change to the correct directory
-        run: cd metaschool_api_suite_tests  # Adjust the directory path as necessary
+      - name: Find pwd
+        run: pwd
+
+      - name: List files
+        run: ls
 
       - name: Install Newman
         run: npm install -g newman

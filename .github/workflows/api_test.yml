@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          repository: '0xmetaschool/metaschool_api_suite_tests'
+          repository: '0xmetaschool/metaschool_api_suite_tests.git'
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js

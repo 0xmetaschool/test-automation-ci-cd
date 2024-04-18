@@ -1,0 +1,33 @@
+name: API Tests Workflow
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  run-newman:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          repository: '0xmetaschool/metaschool_api_suite_tests'
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.12.2'  # Specify your node version here
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Newman
+        run: newman run metaschool_api.postman_collection.json -e  metaschool.postman_environment.json
+        env:
+          NEW_RELIC_LICENSE_KEY: ${{ secrets.NEW_RELIC_LICENSE_KEY }}  # Example of how to use secrets
+
+      - name: Handle test failure
+        if: failure()
+        run: echo "API tests failed" && exit 1
